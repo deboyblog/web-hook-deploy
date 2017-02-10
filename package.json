@@ -1,0 +1,23 @@
+{
+  "name": "web-hook-deploy",
+  "version": "0.0.1",
+  "description": "接收coding/git/etc cvs service webhook 校验Token 然后通过读取配置文件 执行相应hooke events对应的命令或者脚本功能",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deboyblog/web-hook-deploy.git"
+  },
+  "keywords": [
+    "webhook",
+    "deploy"
+  ],
+  "author": "Deboy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deboyblog/web-hook-deploy/issues"
+  },
+  "homepage": "https://github.com/deboyblog/web-hook-deploy#readme"
+}
