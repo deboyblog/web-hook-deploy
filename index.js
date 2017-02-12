@@ -1,3 +1,17 @@
-// 读取所有项目的配置文件 在config目录下添加即可 建议文件名以项目名为准 防止重复添加导致的部署异常
-let configs = require('./configs.js')
-console.log(configs)
+let bodyParser = require('body-parser')
+let multer = require('multer')
+let http = require('http')
+let express = require('express')
+
+const app = new express()
+
+app.set('port', process.env.PORT || 8080)
+
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({extended: true})) // for parsing application/x-www-form-urlencoded
+
+require('./app.js')(app)
+
+http.createServer(app).listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + app.get('port'));
+})

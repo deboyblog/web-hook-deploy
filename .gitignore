@@ -1,1 +1,8 @@
-node_modules/*
+.idea/*
+node_modules/
+logs/
+configs/*
+.babelrc
+WebHookMonitor
+configs/
+yarn.lock

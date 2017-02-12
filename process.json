@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "name": "web-hook-monitor",
+      "script": "index.js",
+      "watch": [
+        "configs"
+      ]
+    }
+  ]
+}
