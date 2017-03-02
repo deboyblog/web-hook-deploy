@@ -6,8 +6,9 @@ Duang 每次都是重复的步骤 写个脚本不就行了吗 就这样出来了
 
 # 原理或功能
 - 接收WebHook通知(dev branch merge to master branch or any events~)
-- 然后通过读取预先配置好的项目配置
-- 执行相应HookEvents对应的命令或者脚本功能
+- 然后通过读取预先配置好的项目配置到项目目录git pull拉取最新代码
+- 匹配事件对应的命令 然后执行对应的命令或者脚本功能
+* Notice: 所有命令都会在项目目录中执行
 完成项目部署~
 
 # 怎么跑起来啊
@@ -22,7 +23,7 @@ npm run install
 
 npm install pm2 -g
 
-npm run create // 创建项目相关配置 生成好配置后 到coding对应项目的webHook设置中添加上相应的配置 默认监听 7070 端口 url： http://ip:3000
+npm run create // 创建项目相关配置 生成好配置后 到coding对应项目的webHook设置中添加上相应的配置 默认监听 7070 端口 url： http://ip:7070
 
 pm2 start process.json
 
