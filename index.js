@@ -5,7 +5,7 @@ let express = require('express')
 
 const app = new express()
 
-app.set('port', process.env.PORT || 8080)
+app.set('port', process.env.PORT || 7070)
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({extended: true})) // for parsing application/x-www-form-urlencoded
