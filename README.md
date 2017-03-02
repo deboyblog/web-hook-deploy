@@ -1,10 +1,37 @@
-# webhook-deploy
+# 初衷
+
+每次上线项目都要build build build... 不厌其烦的biu biu biu ~ biu得我肾虚
+
+Duang 每次都是重复的步骤 写个脚本不就行了吗 就这样出来了
+
+# 原理或功能
 - 接收WebHook通知(dev branch merge to master branch or any events~)
 - 然后通过读取预先配置好的项目配置
 - 执行相应HookEvents对应的命令或者脚本功能
 完成项目部署~
 
-建议用PM2 跑这个进程
-- npm run create // 输入项目相关配置 注意 克隆对应项目到你的服务器上
-- push一次你的代码 // pm2 logs web-hook-monitor 查看实时日志
-- 坐等build 或者 deploy 完成
+# 怎么跑起来啊
+
+** 在项目源码已经放到服务器（确保你服务器上已经部署了ssh 能在项目目录中执行git pull）的情况下 **
+```
+git clone https://github.com/deboyblog/web-hook-deploy
+
+cd web-hook-deploy
+
+npm run install
+
+npm install pm2 -g
+
+npm run create // 输入项目相关配置 生成好配置后 到coding对应项目的webHook设置中添加上相应的配置 默认监听 7070 端口 url： http://ip:3000
+
+push一次你的代码 // pm2 logs web-hook-monitor 查看实时日志
+
+坐等build 或者 deploy 完成
+
+```
+
+## TODO
+ - [] 完善文档
+ - [] 完善容错机制和运行日志
+ - [] 将PM2整合进来
+
