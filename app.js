@@ -17,7 +17,7 @@ module.exports = function (app) {
     if (!req.body || !req.body['token']) {
       result = objectAssign(result, ERROR.EMPTY_TOKEN)
     } else {
-      let event = req.body['event'].toLowerCase()
+      let event = req.body['event'] && req.body['event'].toLowerCase()
       let config = null
       let matchConfig = (token, configList) => {
         let matchConf = null
