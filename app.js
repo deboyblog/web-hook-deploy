@@ -42,8 +42,11 @@ module.exports = function (app) {
               result.msg = stdout + error
             } else {
               console.log('进入项目脚本匹配阶段')
-              if (config.watchEvents.length === 0 || config.watchEvents.join(',').indexOf(event) >= 0) {
+              console.log('接收到的：' + event)
+              console.log('项目中的：' + config.watchEvents.join(','))
+              if (config.watchEvents.length !== 0 && config.watchEvents.join(',').indexOf(event) >= 0) {
                 // 如果是字符串 就默认所有事件都执行
+                console.log('命令脚本类型： ' + typeof config.script)
                 if (typeof config.script === 'string') {
                   console.log('匹配事件成功:' + event + ' 执行命令:' + config.script)
                   process.exec(config.script, {cwd: config.src}, (error2, stdout2, stderr2) => {
