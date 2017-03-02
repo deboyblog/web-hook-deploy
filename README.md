@@ -22,7 +22,9 @@ npm run install
 
 npm install pm2 -g
 
-npm run create // 输入项目相关配置 生成好配置后 到coding对应项目的webHook设置中添加上相应的配置 默认监听 7070 端口 url： http://ip:3000
+npm run create // 创建项目相关配置 生成好配置后 到coding对应项目的webHook设置中添加上相应的配置 默认监听 7070 端口 url： http://ip:3000
+
+pm2 start process.json
 
 push一次你的代码 // pm2 logs web-hook-monitor 查看实时日志
 

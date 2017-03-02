@@ -1,6 +1,6 @@
 {
   "name": "web-hook-deploy",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "接收coding/git/etc cvs webhook 校验Token 然后通过读取配置文件 执行相应hooke events对应的命令或者脚本功能",
   "main": "index.js",
   "scripts": {
