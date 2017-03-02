@@ -41,7 +41,7 @@ module.exports = function (app) {
               result.code = 400
               result.msg = stdout + error
             } else {
-              if (config.watchEvents.length === 0 || config.watchEvents.join(',').indexOf(event) >= 0) {
+              if (config.watchEvents.length === 0 || config.watchEvents.join(',').indexOf(event.toLowerCase()) >= 0) {
                 // 如果是字符串 就默认所有事件都执行
                 if (typeof config.script !== 'string') {
                   process.exec(config.script, {cwd: config.src}, (error2, stdout2, stderr2) => {
