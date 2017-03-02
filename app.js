@@ -17,7 +17,7 @@ module.exports = function (app) {
     if (!req.body || !req.body['token']) {
       result = objectAssign(result, ERROR.EMPTY_TOKEN)
     } else {
-      let event = req.body['event']
+      let event = req.body['event'].toLowerCase()
       let config = null
       let matchConfig = (token, configList) => {
         let matchConf = null
@@ -41,21 +41,26 @@ module.exports = function (app) {
               result.code = 400
               result.msg = stdout + error
             } else {
-              if (config.watchEvents.length === 0 || config.watchEvents.join(',').indexOf(event.toLowerCase()) >= 0) {
+              console.log('进入项目脚本匹配阶段')
+              if (config.watchEvents.length === 0 || config.watchEvents.join(',').indexOf(event) >= 0) {
                 // 如果是字符串 就默认所有事件都执行
-                if (typeof config.script !== 'string') {
+                if (typeof config.script === 'string') {
+                  console.log('匹配事件成功:' + event + ' 执行命令:' + config.script)
                   process.exec(config.script, {cwd: config.src}, (error2, stdout2, stderr2) => {
                     if (error2 !== null) {
                       result = objectAssign(result, ERROR.NO_MATCH_DEPLOY_SCRIPT, {msg: ERROR.NO_MATCH_DEPLOY_SCRIPT.msg + error2 + stderr2})
                     } else {
+                      console.log('执行命令成功:' + config.script)
                       result.msg = '操作成功: ' + stdout2
                     }
                   })
                 } else {
-                  process.exec(config.script[req['body'].event], {cwd: config.src}, (error2, stdout2, stderr2) => {
+                  process.exec(config.script[event], {cwd: config.src}, (error2, stdout2, stderr2) => {
+                    console.log('匹配事件成功:' + event + ' 执行命令:' + config.script[event])
                     if (error2 !== null) {
                       result = objectAssign(result, ERROR.NO_MATCH_DEPLOY_SCRIPT, {msg: ERROR.NO_MATCH_DEPLOY_SCRIPT.msg + error2 + stderr2})
                     } else {
+                      console.log('执行命令成功:' + config.script[event])
                       result.msg = '操作成功: ' + stdout2
                     }
                   })
